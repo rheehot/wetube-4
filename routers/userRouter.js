@@ -9,7 +9,8 @@ import {
 
 const userRouter = express.Router();
 
-userRouter.get(routes.userDetail, userDetail);
+//js 파일이므로 함수 실행도 가능하다.
+userRouter.get(routes.userDetail(), userDetail);
 userRouter.get(routes.users, users);
 userRouter.get(routes.editProfile, editProfile);
 userRouter.get(routes.changePassword, changePassword);

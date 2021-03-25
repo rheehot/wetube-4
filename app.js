@@ -9,6 +9,7 @@ import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
 import routes from "./routes"
 import { localMiddleware } from "./middlewares";
+import bodyParser from "body-Parser";
 
 const app =express()
 
@@ -29,7 +30,8 @@ app.use(morgan("dev"));
 
 //local 변수를 global 변수로 사용 가능하게 만들어줌.
 app.use(localMiddleware)
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended : true }));
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
 app.use(routes.videos, videoRouter);
