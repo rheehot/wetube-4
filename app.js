@@ -8,10 +8,12 @@ import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
 import routes from "./routes"
+import { localMiddleware } from "./middlewares";
 
 const app =express()
 
-
+//viiew
+app.set('view engine', 'pug')
 
 //*res.send('hello from home') : 응답을 보내준다. ' hello from home'이라는. 
 
@@ -20,10 +22,13 @@ const app =express()
 //웹사이트에서 일어나는 모든 일에 대해서 사용함
 //실행 순서가 몹시 중요하다. 쓰고 싶은 미들웨어를 앞에 두고 뒤에 라우트를 둔다.
 //..미들웨어보다 앞서서 나온 라우트에는 미들웨어가 실행되지 않는다. 
+app.use( helmet({ contentSecurityPolicy: false })); 
 app.use(cookieParser());
 app.use(express.json());
-app.use(helmet());
 app.use(morgan("dev"));
+
+//local 변수를 global 변수로 사용 가능하게 만들어줌.
+app.use(localMiddleware)
 
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);

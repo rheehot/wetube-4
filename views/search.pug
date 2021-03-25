@@ -1,0 +1,25 @@
+//pug 파일이다 
+//layout 폴더 main.pug파일에서 확장되었다  --layout 기능 pug에서 확장됨
+//mixin 폴더 videoBlock.pug 파일을 포함하고 있다. --mixin 기능 pug를 포함함. 
+
+
+extends layouts/main
+include mixins/videoBlock
+
+//seachingBy 변수와 videos 오브제가 userRouter에서 정의되어 왔다. 
+//(searchingBy변수는 userRouter에서 정의되었지만, db의 videos오브제는 userRouter도 import한 것이다. )
+//home과 같이 videoBlock mixin을 넣는다. 
+//videoBlock을 사용할 때는 + 와 db에 의존적인 변수를 넣는다. 
+
+
+block content 
+    .search__header 
+        h3 Serching for #{searchingBy}  
+    .search__videos
+        each item in videos
+            +videoBlock({
+                title: item.title,
+                views: item.views,
+                videoFile:item.videoFile
+            })
+
