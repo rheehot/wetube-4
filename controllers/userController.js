@@ -5,13 +5,15 @@
 // {pageTitle: "Join"} :이른바 단순변수. 왜냐하면 각 페이지는 다르니까, 해당 .pug 에서 잘 쓰일 예정. 
 //console.log(req.body) : 유저에게 요청한 결과의body값-- bodyparser(지금은 내장되어 있음.)가 필요한 이유. 
 
+import routes from "../routes";
+
 export const getJoin = (req, res) => {
     res.render("Join", { pageTitle: "Join"});
 };
 
 export const postJoin = (req, res) => {
     console.log(req.body);
-    res.render("join",{ pageTitle: "Join" });
+    res.render("join", {pageTitle:"Join"});
 };
 
 export const login = (req, res) => res.send("Login");
