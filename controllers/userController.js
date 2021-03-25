@@ -8,7 +8,7 @@
 import routes from "../routes";
 
 export const getJoin = (req, res) => {
-    res.render("Join", { pageTitle: "Join"});
+    res.render("join", { pageTitle: "Join"});
 };
 
 export const postJoin = (req, res) => {
@@ -24,7 +24,9 @@ export const postJoin = (req, res) => {
     console.log(name);
 };
 
-export const login = (req, res) => res.send("Login");
+export const login = (req, res) => {
+    res.render("login", { pageTitle: "Login"});
+};
 export const logout = (req, res) => res.send("Logout");
 export const users = (req, res) => res.send("Users");
 export const userDetail = (req, res) => res.send("User Detail");
