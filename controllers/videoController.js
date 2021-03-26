@@ -22,6 +22,7 @@ export const search = (req, res) => {
 
 //비디오 업로드: 
 //1)사용자가 비디오 업로드 2) 새로운 아이디 반환 3) 업로드 후 사용자를 업로드한 비디오의 videoDetail 페이지로 이동(redirect)
+//이때 물론 routes에는 함수가 있다. 
 export const getUpload = (req, res) =>
   res.render("upload", { pageTitle: "Upload" });
   
